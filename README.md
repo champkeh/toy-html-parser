@@ -1,14 +1,16 @@
 # toy-html-parser
 学习如何把html代码解析为dom树而自制的解析器
 
-### 测试代码
+### lexer测试代码
 ```js
-const input = `<html maaa=a       mbbb="b c">
+const input = `<html>
     <head>
         <title>cool</title>
     </head>
-    <body>
+    <body class="foo bar">
         <img src="a" />
+        <input disabled type="text" />
+        hello world
     </body>
 </html>`;
 
@@ -27,21 +29,25 @@ for (let i = 0; i < rawToken.length; i++) {
 console.log(result);
 ```
 
-### 结果
+### lexer输出
 ```js
-[ '<html',
-  'maaa=a',
-  'mbbb="b c"',
-  '>',
+[ '<html>',
   '<head>',
   '<title>',
   'cool',
   '</title>',
   '</head>',
-  '<body>',
+  '<body',
+  'class="foo bar"',
+  '>',
   '<img',
   'src="a"',
   '/>',
+  '<input',
+  'disabled',
+  'type="text"',
+  '/>',
+  'hello world',
   '</body>',
   '</html>' ]
 ```

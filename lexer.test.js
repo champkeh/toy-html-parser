@@ -1,11 +1,13 @@
 const HTMLLexer = require('./lexer');
 
-const input = `<html maaa=a       mbbb="b c">
+const input = `<html>
     <head>
         <title>cool</title>
     </head>
-    <body>
+    <body class="foo bar">
         <img src="a" />
+        <input disabled type="text" />
+        hello world
     </body>
 </html>`;
 
